@@ -1,0 +1,50 @@
+import pygame 
+
+
+pygame.init()
+white = (255, 255, 255)
+black = (0, 0, 0)
+red = (255, 0, 0)
+
+lead_x = 0
+lead_y = 300
+gameDisplay = pygame.display.set_mode((800, 600))
+
+
+font = pygame.font.SysFont("default", 16)
+def messageScreen(msg, color):
+    screen_text = font.render(msg, True, color)
+
+def updateGame(x, y):
+    gameDisplay.fill(white)
+    pygame.draw.rect(gameDisplay, black, [x, y, 10, 10])
+    pygame.display.update()
+    pygame.display.set_caption('Popooo! Briga das galinhas [%d %d]' %(lead_x, lead_y))
+def quitGame():
+    pygame.quit()
+    quit()
+def game():
+    lead_x = 0
+    lead_y = 300
+    gameExit = False
+    while not gameExit:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                gameExit = True
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    lead_x -= 10
+                if event.key == pygame.K_RIGHT:
+                    lead_x += 10
+                if event.key == pygame.K_UP:
+                    lead_y -= 10            
+                if event.type == pygame.QUIT:
+                    gameExit = True    
+        if(lead_x <= 0):
+            lead_x = 1
+        elif(lead_x >= 800):
+            lead_x = 790        
+        updateGame(lead_x, lead_y)    
+
+game()
+quitGame()
