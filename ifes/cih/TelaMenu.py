@@ -28,11 +28,11 @@ class TelaMenu(object):
         if game.botoes[1]: #baixo
             if self.opcao >= 1 and self.opcao < 5 :
                 self.opcao += 1
-                print(self.opcao)
 
         if game.botoes[4]:  # KEY ENTER
-            if self.opcao == 5 :
-                game.status = 99
+            if self.opcao == 5:
+                self.opcao = 99
+
             game.status = self.opcao
 
 
