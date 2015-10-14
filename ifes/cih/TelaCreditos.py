@@ -2,7 +2,7 @@ __author__ = 'Ricardo'
 
 import pygame
 
-from ifes.cdp import *
+from ifes.cgd import *
 
 class TelaCreditos(object):
     def __init__(self):
@@ -14,7 +14,7 @@ class TelaCreditos(object):
 
     def mostrar_creditos(self, game):
         if game.botoes[4]:  # KEY ENTER
-            game.status = 20
+            game.status = 0
 
         game.screen.blit(self.bg_menu, (0, 0))
         game.screen.blit(self.texto_iniciar, (300, 400))

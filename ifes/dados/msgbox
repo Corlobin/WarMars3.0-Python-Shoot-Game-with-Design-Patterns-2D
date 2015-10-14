@@ -1,0 +1,59 @@
+def animateText(text, font, surface, x, y, color):
+  if len(text) > 49:
+    textLine1 = text[:49]
+    textLine2 = text[48:]
+  else:
+    textLine1 = text
+    textLine2 = ""
+  i = 0
+  for letter in textLine1:
+    realLine1 = textLine1[:i]
+    textobj1 = font.render(realLine1,1,color)
+    textrect1 = textobj1.get_rect()
+    textrect1.topleft = (x,y)
+    surface.blit(textobj1,textrect1)
+    pygame.display.update()
+    clock.tick(60)
+    i += 1
+  j = 0
+  for letter in textLine2:
+    realLine2 = textLine2[:j]
+    textobj2 = font.render(textLine2,1,color)
+    textrect2 = textobj2.get_rect()
+    textrect2.topleft = (x,y+10)
+    surface.blit(textobj2,textrect2)
+    pygame.display.update()
+    j += 1
+
+
+
+if __name__ == '__main__':
+    # Initialize the game engine
+    pygame.init()
+
+    size = [400, 300]
+    screen = pygame.display.set_mode(size)
+    pygame.display.set_caption("Example code for the draw module")
+    done = False
+    clock = pygame.time.Clock()
+
+    while not done:
+        clock.tick(15)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+        titleBackground = pygame.image.load("titleBackground.png")
+        screen.blit(titleBackground, (0,0))
+        font = pygame.font.SysFont(None, 20)
+        animateText("Bom dia flor do dia, hoje tem cafe na cama, nao podia esperar o fim de semana", font, screen, 10, 10, (0,0,0))
+        pygame.display.update()
+        started = 0
+        while started == 0:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    started = 1
+
+
+    pygame.quit()

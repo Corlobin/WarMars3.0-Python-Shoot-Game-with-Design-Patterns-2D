@@ -1,6 +1,9 @@
-__author__ = 'Ricardo'
+import pygame
 
-from ifes.cih.TelaJogo import TelaJogo
+from ifes.cci import CtrlTelaJogo
+telajogo = CtrlTelaJogo.CtrlTelaJogo()
+telajogo.exibe_tela()
 
-tela = TelaJogo()
-tela.inicia()
+#tela = TelaJogo.TelaJogo()
+#tela.inicia()
+

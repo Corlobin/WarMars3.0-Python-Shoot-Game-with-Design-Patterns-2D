@@ -2,10 +2,10 @@ __author__ = 'Ricardo'
 
 import pygame
 
-from ifes.cdp import *
+from ifes.cgd import *
 from ifes.cgt import AplGerenciarJogador
-
-class TelaRanking(object):
+from ifes.cih import Singleton
+class TelaRanking(Singleton.Singleton):
     def __init__(self):
 
         self.background_menu = Imagem.Imagem.load_image('ranking.png', 0)
@@ -15,13 +15,9 @@ class TelaRanking(object):
 
         self.texto_iniciar = self.fonte.render("Voltar", 1, (0, 0, 0))
 
-
-
-
     def mostrar_ranking(self, game):
         if game.botoes[4]:  # KEY ENTER
-            game.status = 20
-
+            return 0
 
         game.screen.blit(self.background_menu, (0, 0))
         game.screen.blit(self.texto_iniciar, (300, 380))
@@ -32,7 +28,6 @@ class TelaRanking(object):
                 botao = self.fontebt.render(jogador, 1, (0, 0, 0))
                 game.screen.blit(botao, (125, 160+(index*20)))
             index+=1
-        pygame.display.update()
 
-        return
-
+        game.update()
+        return 3

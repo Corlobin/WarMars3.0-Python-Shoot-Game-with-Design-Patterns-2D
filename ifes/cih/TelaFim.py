@@ -2,7 +2,7 @@ __author__ = 'Ricardo'
 
 import pygame
 
-from ifes.cdp import *
+from ifes.cgd import *
 
 class TelaFim(object):
     def __init__(self):
@@ -12,7 +12,7 @@ class TelaFim(object):
         self.texto_iniciar = self.fonte.render("Voltar", 1, (0, 0, 0))
         self.novo_score = self.fonte.render("Nao fez novo score!", 1, (0, 0, 0))
         self.texto = "Nao fez novo score"
-    def mostra_fim(self, game):
+    def mostrar_fim(self, game):
         if game.botoes[4]:  # KEY ENTER
             game.status = 20
 

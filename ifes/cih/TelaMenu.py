@@ -2,10 +2,12 @@ __author__ = 'Ricardo'
 
 import pygame
 
-from ifes.cdp import *
+from ifes.cgd import *
 
-class TelaMenu(object):
+from ifes.cih import Singleton
+class TelaMenu(Singleton.Singleton):
     def __init__(self):
+
         self.opcao = 1
 
         self.bg_menu = Imagem.Imagem.load_image('menu.png', 0)
@@ -23,21 +25,16 @@ class TelaMenu(object):
         if game.botoes[0]: #cima
             if  self.opcao <= 5 and self.opcao > 1 :
                 self.opcao -= 1
-                print(self.opcao)
 
         if game.botoes[1]: #baixo
             if self.opcao >= 1 and self.opcao < 5 :
                 self.opcao += 1
 
         if game.botoes[4]:  # KEY ENTER
-            if self.opcao == 5:
-                self.opcao = 99
-
-            game.status = self.opcao
-
+            return self.opcao
 
         self.update(game)
-        return
+        return 0
 
     def retorna_posicao(self):
         if self.opcao == 6 :
@@ -52,7 +49,4 @@ class TelaMenu(object):
         game.screen.blit(self.texto_creditos, (300, 370))
         game.screen.blit(self.texto_sair, (300, 400))
         game.screen.blit(self.seta, (275, 280+self.retorna_posicao()))
-
-        pygame.display.update()
-        game.fps = 10
-
+        game.update()
