@@ -12,6 +12,9 @@ class TelaJogo:
         self.music.init()
         self.status = 0
         self.teclas = ""
+
+        self.usuario = None
+
         pygame.mouse.set_visible(True)
         pygame.display.set_caption("Guerra em Marte - Versao 1.0")
         self.screen = pygame.display.set_mode((640, 480))

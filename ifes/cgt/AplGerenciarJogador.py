@@ -5,22 +5,21 @@ from ifes.cdp import Pessoa
 from ifes.cgd import Error
 class AplGerenciarJogador():
     @staticmethod
-    def cadastra_jogador(pessoa):
-        print("Entrando na parte do cadastra jogador")
+    def cadastra_jogador(pessoa_dados):
 
-        objeto = Pessoa.Pessoa()
         try:
-            nome = pessoa["nome"]
-            idade = int(pessoa["idade"])
-            senha = pessoa["senha"]
+            nome = pessoa_dados["nome"]
+            idade = int(pessoa_dados["idade"])
+            senha = pessoa_dados["senha"]
 
-            print(nome, idade, senha)
-            objeto.set_nome(nome)
-            objeto.set_idade(idade)
-            objeto.set_senha(senha)
+            pessoa = Pessoa.Pessoa()
+            pessoa.set_nome(nome)
+            pessoa.set_idade(idade)
+            pessoa.set_senha(senha)
+
             daojogador = DAOJogador.DAOJogador()
             daojogador.inicia_conexao()
-            daojogador.insere_jogador(objeto)
+            daojogador.insere_jogador(pessoa.toString())
             daojogador.fecha_conexao()
 
 
@@ -30,10 +29,47 @@ class AplGerenciarJogador():
         except ValueError:
             raise Error.Error('Idade tem que ser numero!')
 
-
         return
     @staticmethod
     def retorna_jogadores():
         daojogador = DAOJogador.DAOJogador()
         return daojogador.get_jogadores()
 
+    @staticmethod
+    def logar_jogador(pessoa_dados):
+
+        try:
+            print(pessoa_dados)
+            nome = pessoa_dados["nome"]
+            senha = pessoa_dados["senha"]
+            if nome == '':
+                raise Error.Error('Insira um nome')
+            elif senha == '':
+                raise Error.Error('Insira uma senha')
+
+            daojogador = DAOJogador.DAOJogador()
+            daojogador.inicia_conexao()
+            dados = daojogador.logar_jogador(nome, senha)
+            daojogador.fecha_conexao()
+
+
+            #def __init__(self, id, data_criacao, nome, senha, idade, highscore, imagem, tempojogo, tiros, percas):
+            pessoa = Pessoa.Pessoa()
+            pessoa.set_id(dados[0])
+            pessoa.set_data_criacao(dados[1])
+            pessoa.set_nome(dados[2])
+            pessoa.set_senha(dados[3])
+            pessoa.set_idade(dados[4])
+            pessoa.set_highscore(dados[5])
+            pessoa.set_imagem(dados[6])
+            pessoa.set_tempojogo(dados[7])
+            pessoa.set_tempojogo(dados[8])
+            pessoa.set_percas(dados[9])
+
+        except Error.Error as detalhe:
+            raise Error.Error(detalhe.msg)
+
+        except ValueError:
+            raise Error.Error('Idade tem que ser numero!')
+
+        return pessoa

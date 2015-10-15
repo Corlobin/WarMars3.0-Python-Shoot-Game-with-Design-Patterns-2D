@@ -24,8 +24,9 @@ class TelaRanking(Singleton.Singleton):
         game.screen.blit(self.seta, (275, 385))
         index = 0
         for jogador in AplGerenciarJogador.AplGerenciarJogador.retorna_jogadores():
-            if index != 10 :
-                botao = self.fontebt.render(jogador, 1, (0, 0, 0))
+            if index != 10:
+                textoJogador = format("%s %d" % jogador)
+                botao = self.fontebt.render(textoJogador, 1, (0, 0, 0))
                 game.screen.blit(botao, (125, 160+(index*20)))
             index+=1
 

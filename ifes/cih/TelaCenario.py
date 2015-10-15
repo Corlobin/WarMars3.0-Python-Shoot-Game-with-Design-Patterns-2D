@@ -15,7 +15,7 @@ class TelaCenario(object):
         self.bg_dois = pygame.transform.scale(self.bg_dois, (640, 480))
         self.bg_dois_x = self.bg_dois.get_width()
         self.bg_um_x = 0
-        self.player = Helicoptero.Helicoptero("aviaoplayer.png", 6)
+        self.player = Helicoptero.Helicoptero("aviaoplayer.png", 8)
         self.lstInimigos = []
 
         self.timeInimigo = 50
@@ -55,12 +55,13 @@ class TelaCenario(object):
             self.lstInimigos.append(inimigo)
             self.all_sprites_list.add(inimigo)
             self.timeInimigo = 50
+
         print(self.lstInimigos)
         self.verifica_municoes() #Usado para deletar a municao caso ela atinja um inimigo ou saia fora da tela
 
         for inimigo in self.lstInimigos:
             inimigo.move_esquerda()
-            if(inimigo.rect.x < 0):
+            if(inimigo.rect.x <= 0):
                 self.all_sprites_list.remove(inimigo)
                 self.lstInimigos.remove(inimigo)
 
@@ -71,8 +72,6 @@ class TelaCenario(object):
 
         pygame.display.flip()
         pygame.display.update()
-
-        game.fps = 30
 
     def verifica_municoes(self):
         for municao in self.municoes_list:
