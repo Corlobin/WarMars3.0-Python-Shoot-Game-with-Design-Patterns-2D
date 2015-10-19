@@ -5,7 +5,7 @@ import random
 
 from ifes.cdp import *
 from ifes.cgd import Imagem, Som
-from ifes.cdp import Inimigo
+from ifes.cdp.Inimigo import Inimigo
 class TelaCenario(object):
     def __init__(self):
         # Iniciais
@@ -16,14 +16,19 @@ class TelaCenario(object):
         self.bg_dois_x = self.bg_dois.get_width()
         self.bg_um_x = 0
         self.player = Helicoptero.Helicoptero("aviaoplayer.png", 8)
-        self.lstInimigos = []
+        self.inimigo = Inimigo()
+        self.inimigo.rect.y = 10
 
-        self.timeInimigo = 50
-        self.counter = 10
-        self.all_sprites_list = pygame.sprite.Group()
-        self.municoes_list = pygame.sprite.Group()
 
-        self.all_sprites_list.add(self.player)
+        self.sprites_list = pygame.sprite.Group()
+        self.helicoptero_sprite = pygame.sprite.Group()
+        self.inimigos_list = pygame.sprite.Group()
+
+        self.sprites_list.add(self.player)
+        self.sprites_list.add(self.inimigo)
+
+        self.helicoptero_sprite.add(self.player)
+        self.inimigos_list.add(self.inimigo)
 
 
         # Prefacio
@@ -32,6 +37,11 @@ class TelaCenario(object):
         self.seta = Imagem.Imagem.load_image('seta.png', 1)
         self.texto_iniciar = self.fonte.render("Continuar", 1, (0, 0, 0))
         self.pontos = self.fonte.render("Pontos: 0", 1, (255, 255, 255))
+
+        # Fim
+        self.bgfim = Imagem.Imagem.load_image('perdeu.png', 0)
+
+
         return
 
 
@@ -41,56 +51,35 @@ class TelaCenario(object):
             self.player.move_cima()
         elif game.botoes[1]: #Baixo
             self.player.move_baixo()
-        if game.botoes[7] and self.counter <= 0: #backspace
-            municao = Municao.Municao()
-            municao.rect.x = self.player.rect.x + 38 #Para deixar a municao saindo rente ao cano da arma
-            municao.rect.y = self.player.rect.y + 38 #Para deixar a municao saindo rente ao cano da arma
-            self.all_sprites_list.add(municao)
-            self.municoes_list.add(municao)
-            self.counter = 10
-
-
-        if (self.timeInimigo <= 0):
-            inimigo = Inimigo.Inimigo()
-            self.lstInimigos.append(inimigo)
-            self.all_sprites_list.add(inimigo)
-            self.timeInimigo = 50
-
-        print(self.lstInimigos)
-        self.verifica_municoes() #Usado para deletar a municao caso ela atinja um inimigo ou saia fora da tela
-
-        for inimigo in self.lstInimigos:
-            inimigo.move_esquerda()
-            if(inimigo.rect.x <= 0):
-                self.all_sprites_list.remove(inimigo)
-                self.lstInimigos.remove(inimigo)
+        if game.botoes[7]: #backspace
+            self.player.atirar()
 
 
         self.move_cenario_direita(game)
-        self.all_sprites_list.update()
-        self.all_sprites_list.draw(game.screen)
+
+        result1 = pygame.sprite.groupcollide(self.helicoptero_sprite, self.inimigos_list, False, True)
+        if result1:
+            print("Fim de jogo")
+            return 2
+
+        result2 = pygame.sprite.groupcollide(self.player.municoes_list, self.inimigos_list, False, True)
+        if result2:
+            self.player.atualiza_acertos()
+            self.player.atualiza_pontos()
+
+        for inimigo in self.inimigos_list:
+            result3 = pygame.sprite.groupcollide(self.helicoptero_sprite, inimigo.municoes_list, False, True)
+            if result3:
+                inimigo.kill()
+                print("OK")
+                return 2
+
+        self.sprites_list.update()
+        for sprite in self.sprites_list:
+            sprite.draw(game.screen)
 
         pygame.display.flip()
-        pygame.display.update()
-
-    def verifica_municoes(self):
-        for municao in self.municoes_list:
-            if municao.rect.y < -10:
-                self.municoes_list.remove(municao)
-                self.all_sprites_list.remove(municao)
-            for inimigo in self.lstInimigos:
-                if inimigo.rect.colliderect(municao.rect):
-                    self.all_sprites_list.remove(inimigo)
-                    self.all_sprites_list.remove(municao)
-                    self.player.atualiza_pontuacao(1)
-                    self.atualiza_pontuacao()
-
-        self.counter -= 1
-        self.timeInimigo -= 1
-
-
-
-
+        return 1
 
     def mostrar_prefacio(self, game):
         if game.botoes[4]:  # KEY ENTER
@@ -103,6 +92,23 @@ class TelaCenario(object):
         pygame.display.update()
         game.fps = 30
 
+    def mostrar_fim(self, game):
+        if game.botoes[4]:  # KEY ENTER
+            return 0
+
+        self.texto_iniciar = self.fonte.render("Voltar", 1, (0, 0, 0))
+        self.novo_score = self.fonte.render("Nao fez novo score!", 1, (0, 0, 0))
+
+        texto = "Novo score: %d" %(5)
+        self.novo_score = self.fonte.render(texto, 1, (0, 0, 0))
+
+
+        game.screen.blit(self.bgfim, (0, 0))
+        game.screen.blit(self.texto_iniciar, (300, 400))
+        game.screen.blit(self.seta, (275, 405))
+        game.screen.blit(self.novo_score, (200, 50))
+        pygame.display.update()
+        return 2
 
     def move_cenario_direita(self, game):
         self.bg_um_x -= 10

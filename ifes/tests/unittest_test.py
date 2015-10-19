@@ -6,6 +6,11 @@ from ifes.cgd import Error
 from ifes.cih import TelaLogin
 from ifes.cgd import Imagem
 
+from ifes.cdp import Helicoptero
+from ifes.cdp import Municao
+
+
+from ifes.cdp.Inimigo import Inimigo
 class TestStringMethods(unittest.TestCase):
     def test_upper(self):
         self.assertEqual('foo'.upper(), 'FOO')
@@ -109,6 +114,61 @@ class TestStringMethods(unittest.TestCase):
                         pygame.quit()
 
 
+    def test_shoot_helicoptero(self):
+        pygame.init()
+        pygame.font.init()
+        pygame.mouse.set_visible(True)
+        screen = pygame.display.set_mode((640, 480))
+        clock = pygame.time.Clock()
+        helicoptero = Helicoptero.Helicoptero("aviao.png", 10)
+        inimigo = Inimigo()
+        inimigo.rect.y = 10
+
+
+        sprites_list = pygame.sprite.Group()
+        helicoptero_sprite = pygame.sprite.Group()
+        inimigos_list = pygame.sprite.Group()
+
+
+        sprites_list.add(helicoptero)
+        sprites_list.add(inimigo)
+
+        helicoptero_sprite.add(helicoptero)
+        inimigos_list.add(inimigo)
+
+        while True:
+            screen.fill((255,255,255))
+
+            #quadrado = pygame.draw.rect(screen, (0,0,0), (500,30,20,20), 0)
+            #sprites.add(quadrado)
+
+            #print('Colisao helicoptero x inimigo: %s' % result1)
+
+            #print('Colisao municao x inimigo: %s' % result2)
+
+            #print('Colisao municao x inimigo: %s' % result2)
+            result1 = pygame.sprite.groupcollide(helicoptero_sprite, inimigos_list, True, False)
+            result2 = pygame.sprite.groupcollide(helicoptero.municoes_list, inimigos_list, False, True)
+            for inimigo in inimigos_list:
+                result3 = pygame.sprite.groupcollide(helicoptero_sprite, inimigo.municoes_list, True, False)
+                if result3:
+                    print("GAME OVER")
+
+
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:  # ESC
+                        pygame.quit()
+                    if event.key == pygame.K_SPACE:
+                        helicoptero.atirar()
+            clock.tick(15)
+
+
+            sprites_list.update()
+            for sprite in sprites_list:
+                sprite.draw(screen)
+
+            pygame.display.update()
 
 if __name__ == '__main__':
     unittest.main()

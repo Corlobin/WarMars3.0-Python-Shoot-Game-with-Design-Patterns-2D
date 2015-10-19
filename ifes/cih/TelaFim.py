@@ -12,13 +12,14 @@ class TelaFim(object):
         self.texto_iniciar = self.fonte.render("Voltar", 1, (0, 0, 0))
         self.novo_score = self.fonte.render("Nao fez novo score!", 1, (0, 0, 0))
         self.texto = "Nao fez novo score"
+
     def mostrar_fim(self, game):
         if game.botoes[4]:  # KEY ENTER
-            game.status = 20
+            return 3
 
-        if  game.player.pontos > game.player.highscore :
-            game.player.highscore = game.player.pontos
-            self.texto = "Novo score: %d" %(game.player.highscore)
+        if  0 == 0 :
+            #game.player.highscore = game.player.pontos
+            self.texto = "Novo score: %d" %(5)
 
         self.novo_score = self.fonte.render(self.texto, 1, (0, 0, 0))
 
@@ -28,5 +29,5 @@ class TelaFim(object):
         game.screen.blit(self.seta, (275, 405))
         game.screen.blit(self.novo_score, (200, 50))
         pygame.display.update()
-        return
+        return 2
 

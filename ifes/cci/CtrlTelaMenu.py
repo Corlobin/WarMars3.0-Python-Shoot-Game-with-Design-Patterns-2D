@@ -20,16 +20,13 @@ class CtrlTelaMenu(Singleton.Singleton):
         if(self.opcao == 0):
             game.update_clock(10)
             self.opcao = self.tela_menu.mostrar_menu(game)
-            #print(self.opcao)
 
         elif self.opcao == 1:
             self.opcao = self.ctrl_login.mostrar_login(game)
-            #print("Iniciar")
 
         elif self.opcao == 2:
             game.update_clock(10)
             self.opcao = self.ctrl_cadastro.mostrar_cadastro(game)
-            #print(self.opcao)
 
         elif self.opcao == 3:
             game.update_clock(10)

@@ -19,7 +19,7 @@ class CtrlTelaLogin(Singleton.Singleton):
         print("Invocando o metodo construtor mais de uma vez nao pode !!")
 
     def mostrar_login(self, game):
-        if self.mostrandoCenario == False:
+        if self.mostrandoCenario == False and self.pessoa == None:
             game.update_clock(10)
             self.pessoa, self.opcao = self.tela.mostrar_login(game)
 
@@ -30,7 +30,7 @@ class CtrlTelaLogin(Singleton.Singleton):
                 print(self.pessoa)
                 self.mostrandoCenario = True
                 waiting = 0
-                while waiting <= 400:
+                while waiting <= 200:
                     self.tela.update_error(game, waiting)
                     waiting += 1
                 game.usuario = self.pessoa
@@ -42,8 +42,12 @@ class CtrlTelaLogin(Singleton.Singleton):
                 self.tela.exibe_mensagem(arg.msg)
 
         elif self.pessoa != None and self.mostrandoCenario == True:
-            self.ctrl_cenario.mostrar_cenario(game)
-            print(self.pessoa.toString())
+            self.opcao = self.ctrl_cenario.mostrar_cenario(game)
+            if(self.opcao == 0):
+                self.mostrandoCenario = False
+
+        elif self.pessoa != None and self.mostrandoCenario == False:
+            self.mostrandoCenario = True
 
         return self.opcao
 
