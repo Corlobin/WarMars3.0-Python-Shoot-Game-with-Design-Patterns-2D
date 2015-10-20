@@ -2,7 +2,7 @@ __author__ = 'Ricardo'
 
 
 from ifes.cih import TelaCadastro
-from ifes.cih import Singleton
+from ifes.util import Singleton
 from ifes.cgt import AplGerenciarJogador
 from ifes.cgd import Error
 class CtrlTelaCadastro(Singleton.Singleton):

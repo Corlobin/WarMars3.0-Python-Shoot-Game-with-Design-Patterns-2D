@@ -1,12 +1,11 @@
 __author__ = 'Ricardo'
 
-import pygame
 from ifes.cih import *
-from ifes.cgt import AplGerenciarJogador
-from ifes.cgd import Error
 
 from ifes.cci import CtrlTelaMenu
-from ifes.cih import Singleton
+from ifes.util import Singleton
+
+
 class CtrlTelaJogo(Singleton.Singleton):
     def __init__(self):
         self.tela = TelaJogo.TelaJogo()

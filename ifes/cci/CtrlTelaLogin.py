@@ -1,10 +1,9 @@
 __author__ = 'Ricardo'
 
-import time
 from ifes.cih import TelaLogin
 from ifes.cih import TelaCenario
 from ifes.cci import CtrlTelaCenario
-from ifes.cih import Singleton
+from ifes.util import Singleton
 from ifes.cgt import AplGerenciarJogador
 from ifes.cgd import Error
 class CtrlTelaLogin(Singleton.Singleton):

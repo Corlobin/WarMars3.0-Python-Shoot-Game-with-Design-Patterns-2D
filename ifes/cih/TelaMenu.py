@@ -3,8 +3,9 @@ __author__ = 'Ricardo'
 import pygame
 
 from ifes.cgd import *
+from ifes.util import Singleton
 
-from ifes.cih import Singleton
+
 class TelaMenu(Singleton.Singleton):
     def __init__(self):
 

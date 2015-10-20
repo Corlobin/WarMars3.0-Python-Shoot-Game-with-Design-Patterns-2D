@@ -2,7 +2,9 @@ __author__ = 'Ricardo'
 
 
 from ifes.cih import TelaRanking
-from ifes.cih import Singleton
+from ifes.util import Singleton
+
+
 class CtrlTelaRanking(Singleton.Singleton):
 
     def __init__(self):

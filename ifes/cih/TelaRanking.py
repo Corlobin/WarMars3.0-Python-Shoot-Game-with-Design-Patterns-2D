@@ -4,7 +4,9 @@ import pygame
 
 from ifes.cgd import *
 from ifes.cgt import AplGerenciarJogador
-from ifes.cih import Singleton
+from ifes.util import Singleton
+
+
 class TelaRanking(Singleton.Singleton):
     def __init__(self):
 

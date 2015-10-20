@@ -1,6 +1,7 @@
 __author__ = 'Ricardo'
 from ifes.cih import TelaCenario, TelaFim
-from ifes.cih import Singleton
+from ifes.util import Singleton
+
 
 class CtrlTelaCenario(Singleton.Singleton):
     def __init__(self):
