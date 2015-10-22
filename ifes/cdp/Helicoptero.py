@@ -39,6 +39,10 @@ class Helicoptero(pygame.sprite.Sprite):
     def get_speed(self):
         return self.speed
 
+    def set_imagem(self, img):
+        self.image = Imagem.load_image(img, 1)
+        self.rect = self.image.get_rect()
+
     def set_speed(self, speed):
         self.speed = speed
 

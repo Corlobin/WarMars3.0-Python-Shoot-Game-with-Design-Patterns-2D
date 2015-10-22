@@ -6,6 +6,7 @@ import datetime
 class Pessoa:
     def __init__(self):
         self._datacriado = datetime.datetime.now()
+        self.id = 1
         self._nome = ""
         self._senha = ""
         self._idade = 0
@@ -15,17 +16,6 @@ class Pessoa:
         self._tempojogo = 0
         self._tiros = 0
         self._percas = 0
-
-        self._helicoptero = None
-
-
-
-
-    def get_helicoptero(self):
-        return self._helicoptero
-
-    def create_helicoptero(self):
-        self.helicoptero = Helicoptero.Helicoptero()
 
     def set_nome(self, nome):
         if len(nome) < 5:
@@ -62,6 +52,21 @@ class Pessoa:
         self._tiros = tiros
     def set_percas(self, percas):
         self._percas = percas
+
+    def get_id(self):
+        return self.id
+    def get_data_criacao(self):
+        return self._datacriado
+    def get_highscore(self):
+        return self._highscore
+    def get_imagem(self):
+        return self._imagem
+    def get_tempojogo(self):
+        return self._tempojogo
+    def get_tiros(self):
+        return self._tiros
+    def get_percas(self):
+        return self._percas
 
 
     def get_nome(self):

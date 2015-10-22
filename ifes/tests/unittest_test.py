@@ -170,5 +170,33 @@ class TestStringMethods(unittest.TestCase):
 
             pygame.display.update()
 
+    def testa_salvar(self):
+        try:
+
+            pessoa = Pessoa.Pessoa()
+            pessoa.set_nome("Velhote")
+            pessoa.set_idade(13)
+            pessoa.set_senha("sahdua123")
+            daojogador = DAOJogador.DAOJogador()
+            daojogador.inicia_conexao()
+            #daojogador.insere_jogador(pessoa.toString())
+            print(daojogador.get_jogadores())
+
+
+            pessoa.set_highscore(100)
+            print(pessoa.get_highscore())
+            daojogador.salvar_jogador(pessoa)
+
+            print(daojogador.get_jogadores())
+
+            daojogador.fecha_conexao()
+
+        except Error.Error as m:
+            print(m.msg)
+        except Exception as e:
+            print(e.args[0])
+
+
+
 if __name__ == '__main__':
     unittest.main()

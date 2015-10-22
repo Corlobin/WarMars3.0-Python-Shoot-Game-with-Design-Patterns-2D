@@ -29,6 +29,7 @@ class TelaCenario(object):
 
         self.helicoptero_sprite.add(self.player)
         self.inimigos_list.add(self.inimigo)
+        self.time = 45
 
 
         # Prefacio
@@ -40,6 +41,7 @@ class TelaCenario(object):
 
         # Fim
         self.bgfim = Imagem.Imagem.load_image('perdeu.png', 0)
+        self.novo_score = self.fonte.render("Nao fez novo score!", 1, (0, 0, 0))
 
 
         return
@@ -54,8 +56,14 @@ class TelaCenario(object):
         if game.botoes[7]: #backspace
             self.player.atirar()
 
-
         self.move_cenario_direita(game)
+        if self.time <= 0:
+            inimigo = Inimigo()
+            self.inimigos_list.add(inimigo)
+            self.sprites_list.add(inimigo)
+            self.time = 60
+        self.time -= 1
+        print(self.inimigos_list)
 
         result1 = pygame.sprite.groupcollide(self.helicoptero_sprite, self.inimigos_list, False, True)
         if result1:
@@ -77,7 +85,7 @@ class TelaCenario(object):
         self.sprites_list.update()
         for sprite in self.sprites_list:
             sprite.draw(game.screen)
-
+        self.atualiza_pontuacao()
         pygame.display.flip()
         return 1
 
@@ -97,10 +105,13 @@ class TelaCenario(object):
             return 0
 
         self.texto_iniciar = self.fonte.render("Voltar", 1, (0, 0, 0))
-        self.novo_score = self.fonte.render("Nao fez novo score!", 1, (0, 0, 0))
+        #print('Pontuacao: %d' % self.player.get_pontuacao())
+        #print('Highscore: %d' % game.usuario.get_highscore())
 
-        texto = "Novo score: %d" %(5)
-        self.novo_score = self.fonte.render(texto, 1, (0, 0, 0))
+        if self.player.get_pontuacao() > game.usuario.get_highscore():
+            texto = "Novo score: %d" %(self.player.get_pontuacao())
+            self.novo_score = self.fonte.render(texto, 1, (0, 0, 0))
+            game.usuario.set_highscore(self.player.get_pontuacao())
 
 
         game.screen.blit(self.bgfim, (0, 0))

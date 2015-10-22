@@ -42,6 +42,8 @@ class Inimigo(Helicoptero.Helicoptero):
         self.municoes_list.update()
 
 
+
+
     def atirar(self):
         if self.shoot < 0:
             municao = Municao(2)

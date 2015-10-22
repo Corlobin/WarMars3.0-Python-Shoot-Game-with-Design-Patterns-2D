@@ -30,6 +30,7 @@ class AplGerenciarJogador():
             raise Error.Error('Idade tem que ser numero!')
 
         return
+
     @staticmethod
     def retorna_jogadores():
         daojogador = DAOJogador.DAOJogador()
@@ -53,7 +54,6 @@ class AplGerenciarJogador():
             daojogador.fecha_conexao()
 
 
-            #def __init__(self, id, data_criacao, nome, senha, idade, highscore, imagem, tempojogo, tiros, percas):
             pessoa = Pessoa.Pessoa()
             pessoa.set_id(dados[0])
             pessoa.set_data_criacao(dados[1])
@@ -73,3 +73,16 @@ class AplGerenciarJogador():
             raise Error.Error('Idade tem que ser numero!')
 
         return pessoa
+    @staticmethod
+    def salvar_jogador(pessoa):
+
+        try:
+            daojogador = DAOJogador.DAOJogador()
+            daojogador.inicia_conexao()
+            daojogador.salvar_jogador(pessoa)
+            daojogador.fecha_conexao()
+        except Error.Error as detalhe:
+            raise Error.Error(detalhe.msg)
+
+        return
+

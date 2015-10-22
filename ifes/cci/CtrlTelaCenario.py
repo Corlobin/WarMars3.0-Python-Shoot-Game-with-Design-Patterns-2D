@@ -14,10 +14,11 @@ class CtrlTelaCenario(Singleton.Singleton):
         game.update_clock(30)
         if self.opcao == 1:
             self.opcao = self.tela_cenario.mostrar_fase(game)
+
         elif self.opcao == 2:
             self.opcao = self.tela_cenario.mostrar_fim(game)
             if (self.opcao == 0):
                 self.opcao = 1
                 return 0
-        print(self.opcao)
+        #print(self.opcao)
         return 1

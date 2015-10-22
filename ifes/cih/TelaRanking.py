@@ -19,6 +19,7 @@ class TelaRanking(Singleton.Singleton):
 
     def mostrar_ranking(self, game):
         if game.botoes[4]:  # KEY ENTER
+            print('sair')
             return 0
 
         game.screen.blit(self.background_menu, (0, 0))
