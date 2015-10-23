@@ -26,6 +26,8 @@ Os padrões de projetos implementados em PYTHON foram os seguintes:
 
 **Fachada**: Foi implementado como o objetivo de compor funções, deixando o código mais limpo, legível e de fácil manutenção. A seguir um techo de código que utiliza o padrão fachada.
 
+https://raw.githubusercontent.com/Corlobin/WarMars2.0/master/fachada.png
+
 **Adapter**: Não houve a necessidade de integrar uma interface com a outra. 
 
 **Singleton**: Foi implementada em todos os controladores, porque não haveria a necessidade de carregar os botões, imagens de menu, background diversas vezes das telas. Nos controles, temos as instanciações das Telas respectivas no Init(), desse modo, as telas seriam carregadas uma vez, poupando memória e melhorando o desempenho do game. Para a implementação do Padrão de Projetos Singleton foi utilizado o livro Design Patters in Python **(Community experience distilled) Gennadiy Zlobin-Learning Python design patterns _ a practical and fast-paced guide exploring Python design patterns-Packt Pub (2013)**
@@ -82,7 +84,7 @@ O padrão MVC foi utilizado para abstrair a interação das telas das demais tor
 
 ### Diagrama de classes + Diagrama de padrões ###
 
-imagem
+https://raw.githubusercontent.com/Corlobin/WarMars2.0/master/diagrama%20padr%C3%B5es.png
 
 ### Soonar ##
 
