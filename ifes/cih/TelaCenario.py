@@ -6,6 +6,8 @@ import random
 from ifes.cdp import *
 from ifes.cgd import Imagem, Som
 from ifes.cdp.Inimigo import Inimigo
+
+from ifes.util.GameInimigo import GameInimigo
 class TelaCenario(object):
     def __init__(self):
         # Iniciais
@@ -16,8 +18,10 @@ class TelaCenario(object):
         self.bg_dois_x = self.bg_dois.get_width()
         self.bg_um_x = 0
         self.player = Helicoptero.Helicoptero("aviaoplayer.png", 8)
-        self.inimigo = Inimigo()
-        self.inimigo.rect.y = 10
+        self.inimigo = GameInimigo.criar_inimigo(
+
+        )
+        #self.inimigo.rect.y = 10
 
 
         self.sprites_list = pygame.sprite.Group()
@@ -58,7 +62,7 @@ class TelaCenario(object):
 
         self.move_cenario_direita(game)
         if self.time <= 0:
-            inimigo = Inimigo()
+            inimigo = GameInimigo.criar_inimigo()
             self.inimigos_list.add(inimigo)
             self.sprites_list.add(inimigo)
             self.time = 60
