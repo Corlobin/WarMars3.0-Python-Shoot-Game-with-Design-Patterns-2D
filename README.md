@@ -92,6 +92,11 @@ O padrão MVC foi utilizado para abstrair a interação das telas das demais tor
 
 ### Soonar ##
 
-avaliação
+Avaliação anterior 1.0:
+![](https://github.com/Corlobin/WarMars2.0/blob/master/soonar.png?raw=true)
+
+A avaliação do soonar nessa versão:
+![](https://github.com/Corlobin/WarMars2.0/blob/master/soonar2.png?raw=true)
+
 
 
