@@ -34,14 +34,14 @@ Os padrões de projetos implementados em PYTHON foram os seguintes:
 
 **Adapter**: Não houve a necessidade de integrar uma interface com a outra. 
 
-**Singleton**: Foi implementada em todos os controladores, porque não haveria a necessidade de carregar os botões, imagens de menu, background diversas vezes das telas. Nos controles, temos as instanciações das Telas respectivas no Init(), desse modo, as telas seriam carregadas uma vez, poupando memória e melhorando o desempenho do game. Para a implementação do Padrão de Projetos Singleton foi utilizado o livro Design Patters in Python **(Community experience distilled) Gennadiy Zlobin-Learning Python design patterns _ a practical and fast-paced guide exploring Python design patterns-Packt Pub (2013)**
+**Singleton**: Foi implementada em todos os controladores e no metodo fabrica, porque não haveria a necessidade de carregar os botões, imagens de menu, background diversas vezes das telas. Nos controles, temos as instanciações das Telas respectivas no Init(), desse modo, as telas seriam carregadas uma vez, poupando memória e melhorando o desempenho do game. Para a implementação do Padrão de Projetos Singleton foi utilizado o livro Design Patters in Python **(Community experience distilled) Gennadiy Zlobin-Learning Python design patterns _ a practical and fast-paced guide exploring Python design patterns-Packt Pub (2013)**
 
 
-**Fábrica** Foi implementado o padrão de projeto Fábrica para a criação de Inimigos no jogo. A implementação desse *método fábrica* carece de amadurecimento, uma vez que todos os tutoriais de implementação desse padrão na línguagem python não traziam as informações necessárias para a implementação concisa. **http://python-3-patterns-idioms-test.readthedocs.org/en/latest/Factory.html**
+**Método Fábrica** Foi criado uma metodo fabrica para criar os inimigos. FabricaAbstrata não foi implementado pois nao exitem por enquanto inimigos com comportamentos diferentes. **http://python-3-patterns-idioms-test.readthedocs.org/en/latest/Factory.html**
 
-**Builder**: Não foi possível implementar este padrão de projetos pois houve uma necessidade de carência de informações de como implementa-lo na línguagem Python.
+**Builder**: Por enquanto não houve necessidade de usar.
 
-**Decorator**: Nessa versão do jogo não houve necessidade de implementar esse padrão de projetos, pois ainda não há um modo de "Level", mas em futuras versões terão "Ups" nos nívels das naves com mudanças de armas/cores, nesse caso, essa implementação será bastante útil. 
+**Prototipo**: Foi utilizado prototipo na classe Inimigo para definir a Imagem de cada Inimigo. 
 
 
 ### O padrão MVC ###
@@ -90,6 +90,19 @@ O padrão MVC foi utilizado para abstrair a interação das telas das demais tor
 
 ![](https://raw.githubusercontent.com/Corlobin/WarMars2.0/master/diagrama%20padr%C3%B5es.png)
 
+O padrão **Singleton** foi implementado nos seguintes controladores:
+
+1. **CtrlTelaCadastro**
+2. **CtrlTelaCenario**
+3. **CtrlTelaJogo**
+4. **CtrlTelaLogin**
+5. **CtrlTelaMenu**
+6. **CtrlTelaRanking**
+
+Para que eles não instanciem mais de uma tela por vez. Foi implementado também no **MétodoFábrica**, pois não preciso ficar instanciando essa classe não precisa ser instanciada mais de uma vez.
+
+
+
 ### Soonar ##
 
 Avaliação anterior 1.0:
@@ -99,4 +112,8 @@ A avaliação do soonar nessa versão:
 ![](https://github.com/Corlobin/WarMars2.0/blob/master/soonar2.png?raw=true)
 
 
+### Como jogar? ###
+Ficou interessado para jogar é bem simples. A versão do Python deve ser a 3.5, com a biblioteca **pygame** instalada e a biblioteca **sqlite3** instalada. É necessario uma IDE, sugiro que utilize a melhor, **pycharm**. Após isso, abra o projeto no Pycharm e execute o Application.
+
+Essa aplicação não foi testada sem outra IDE!
 

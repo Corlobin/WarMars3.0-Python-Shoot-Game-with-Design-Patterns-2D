@@ -90,6 +90,19 @@ O padrão MVC foi utilizado para abstrair a interação das telas das demais tor
 
 ![](https://raw.githubusercontent.com/Corlobin/WarMars2.0/master/diagrama%20padr%C3%B5es.png)
 
+O padrão **Singleton** foi implementado nos seguintes controladores:
+
+1. **CtrlTelaCadastro**
+2. **CtrlTelaCenario**
+3. **CtrlTelaJogo**
+4. **CtrlTelaLogin**
+5. **CtrlTelaMenu**
+6. **CtrlTelaRanking**
+
+Para que eles não instanciem mais de uma tela por vez. Foi implementado também no **MétodoFábrica**, pois não preciso ficar instanciando essa classe não precisa ser instanciada mais de uma vez.
+
+
+
 ### Soonar ##
 
 Avaliação anterior 1.0:
@@ -99,4 +112,8 @@ A avaliação do soonar nessa versão:
 ![](https://github.com/Corlobin/WarMars2.0/blob/master/soonar2.png?raw=true)
 
 
+### Como jogar? ###
+Ficou interessado para jogar é bem simples. A versão do Python deve ser a 3.5, com a biblioteca **pygame** instalada e a biblioteca **sqlite3** instalada. É necessario uma IDE, sugiro que utilize a melhor, **pycharm**. Após isso, abra o projeto no Pycharm e execute o Application.
+
+Essa aplicação não foi testada sem outra IDE!
 
