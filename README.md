@@ -88,7 +88,10 @@ O padrão MVC foi utilizado para abstrair a interação das telas das demais tor
 
 ### Diagrama de classes + Diagrama de padrões ###
 
+
 ![](https://raw.githubusercontent.com/Corlobin/WarMars2.0/master/diagrama%20padr%C3%B5es.png)
+![](https://raw.githubusercontent.com/Corlobin/WarMars2.0/master/diagrama%20pastas.png)
+
 
 O padrão **Singleton** foi implementado nos seguintes controladores:
 
@@ -117,3 +120,7 @@ Ficou interessado para jogar é bem simples. A versão do Python deve ser a 3.5,
 
 Essa aplicação não foi testada sem outra IDE!
 
+![](https://github.com/Corlobin/WarMars2.0/blob/master/tutorial.png?raw=true)
+
+
+Qualquer sugestão, critica e/ou ajuda é bem vinda! contato: **anribrasil@gmail.com** / Equipe.
