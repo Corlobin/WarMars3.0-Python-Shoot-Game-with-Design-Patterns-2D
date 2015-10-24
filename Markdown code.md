@@ -1,5 +1,9 @@
 ## War Mars ##
 
+
+
+![](https://raw.githubusercontent.com/Corlobin/WarMars2.0/master/ifes/dados/imagens/War-in-Mars.png)
+
 **War Mars** é um jogo que está sendo desenvolvido para Windows/Linux/MacOS na línguagem Python.
 
 ## História ##
@@ -26,18 +30,18 @@ Os padrões de projetos implementados em PYTHON foram os seguintes:
 
 **Fachada**: Foi implementado como o objetivo de compor funções, deixando o código mais limpo, legível e de fácil manutenção. A seguir um techo de código que utiliza o padrão fachada.
 
-https://raw.githubusercontent.com/Corlobin/WarMars2.0/master/fachada.png
+![](https://raw.githubusercontent.com/Corlobin/WarMars2.0/master/fachada.png)
 
 **Adapter**: Não houve a necessidade de integrar uma interface com a outra. 
 
-**Singleton**: Foi implementada em todos os controladores, porque não haveria a necessidade de carregar os botões, imagens de menu, background diversas vezes das telas. Nos controles, temos as instanciações das Telas respectivas no Init(), desse modo, as telas seriam carregadas uma vez, poupando memória e melhorando o desempenho do game. Para a implementação do Padrão de Projetos Singleton foi utilizado o livro Design Patters in Python **(Community experience distilled) Gennadiy Zlobin-Learning Python design patterns _ a practical and fast-paced guide exploring Python design patterns-Packt Pub (2013)**
+**Singleton**: Foi implementada em todos os controladores e no metodo fabrica, porque não haveria a necessidade de carregar os botões, imagens de menu, background diversas vezes das telas. Nos controles, temos as instanciações das Telas respectivas no Init(), desse modo, as telas seriam carregadas uma vez, poupando memória e melhorando o desempenho do game. Para a implementação do Padrão de Projetos Singleton foi utilizado o livro Design Patters in Python **(Community experience distilled) Gennadiy Zlobin-Learning Python design patterns _ a practical and fast-paced guide exploring Python design patterns-Packt Pub (2013)**
 
 
-**Fábrica** Foi implementado o padrão de projeto Fábrica para a criação de Inimigos no jogo. A implementação desse *método fábrica* carece de amadurecimento, uma vez que todos os tutoriais de implementação desse padrão na línguagem python não traziam as informações necessárias para a implementação concisa. **http://python-3-patterns-idioms-test.readthedocs.org/en/latest/Factory.html**
+**Método Fábrica** Foi criado uma metodo fabrica para criar os inimigos. FabricaAbstrata não foi implementado pois nao exitem por enquanto inimigos com comportamentos diferentes. **http://python-3-patterns-idioms-test.readthedocs.org/en/latest/Factory.html**
 
-**Builder**: Não foi possível implementar este padrão de projetos pois houve uma necessidade de carência de informações de como implementa-lo na línguagem Python.
+**Builder**: Por enquanto não houve necessidade de usar.
 
-**Decorator**: Nessa versão do jogo não houve necessidade de implementar esse padrão de projetos, pois ainda não há um modo de "Level", mas em futuras versões terão "Ups" nos nívels das naves com mudanças de armas/cores, nesse caso, essa implementação será bastante útil. 
+**Prototipo**: Foi utilizado prototipo na classe Inimigo para definir a Imagem de cada Inimigo. 
 
 
 ### O padrão MVC ###
@@ -84,9 +88,15 @@ O padrão MVC foi utilizado para abstrair a interação das telas das demais tor
 
 ### Diagrama de classes + Diagrama de padrões ###
 
-https://raw.githubusercontent.com/Corlobin/WarMars2.0/master/diagrama%20padr%C3%B5es.png
+![](https://raw.githubusercontent.com/Corlobin/WarMars2.0/master/diagrama%20padr%C3%B5es.png)
 
 ### Soonar ##
 
-avaliação
+Avaliação anterior 1.0:
+![](https://github.com/Corlobin/WarMars2.0/blob/master/soonar.png?raw=true)
+
+A avaliação do soonar nessa versão:
+![](https://github.com/Corlobin/WarMars2.0/blob/master/soonar2.png?raw=true)
+
+
 
