@@ -55,7 +55,7 @@ class CtrlTelaLogin(Singleton.Singleton):
         else:
         #elif self.pessoa != None and self.mostrandoCenario == True:
             status = self.ctrl_cenario.mostrar_cenario(game)
-            print('Status: %d' % status)
+            #print('Status: %d' % status)
             if(status == 0):
                 #self.mostrandoCenario = False
                 AplGerenciarJogador.AplGerenciarJogador.salvar_jogador(game.usuario)

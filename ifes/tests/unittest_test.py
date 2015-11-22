@@ -1,3 +1,4 @@
+import importlib
 import unittest
 import pygame
 from ifes.cdp import Pessoa
@@ -8,7 +9,7 @@ from ifes.cgd import Imagem
 
 from ifes.cdp import Helicoptero
 from ifes.cdp import Municao
-
+from ifes.util.FabricaInimigo import FabricaInimigo
 
 from ifes.cdp.Inimigo import Inimigo
 class TestStringMethods(unittest.TestCase):
@@ -195,6 +196,47 @@ class TestStringMethods(unittest.TestCase):
             print(m.msg)
         except Exception as e:
             print(e.args[0])
+
+    def testa_fabrica(self):
+        inimigo = FabricaInimigo.criar_inimigo()
+        print(inimigo.pontuacao)
+        print(inimigo.image)
+
+    def testa_reflection2(self, nome):
+        nome = [nome]
+        path = "ifes.cdp." + nome
+        _temp = __import__(path, fromlist=nome)
+        inimigo = getattr(_temp, nome)
+        inimigo = inimigo()
+        print(inimigo)
+
+    def testa_reflection(self):
+        nome = ['Inimigo']
+        path = "ifes.cdp.Inimigo"
+        #_temp = __import__(path, fromlist=nome)
+        #inimigo = _temp.Inimigo
+        #inimigo = inimigo()
+
+    def testa_fabrica(self):
+
+        pygame.init()
+        pygame.font.init()
+        pygame.mouse.set_visible(True)
+        screen = pygame.display.set_mode((640, 480))
+        clock = pygame.time.Clock()
+        inimigo = FabricaInimigo.criar_inimigo()
+
+        while True:
+            screen.fill((255,255,255))
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:  # ESC
+                        pygame.quit()
+            clock.tick(15)
+
+
+            inimigo.update()
+            pygame.display.update()
 
 
 

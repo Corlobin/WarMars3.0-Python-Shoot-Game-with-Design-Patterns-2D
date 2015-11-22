@@ -1,5 +1,5 @@
 __author__ = 'Ricardo'
-
+from ifes.util.FabricaPessoa import FabricaPessoa
 from ifes.cgd import DAOJogador
 from ifes.cdp import Pessoa
 from ifes.cgd import Error
@@ -12,15 +12,15 @@ class AplGerenciarJogador():
             idade = int(pessoa_dados["idade"])
             senha = pessoa_dados["senha"]
 
-            pessoa = Pessoa.Pessoa()
+            pessoa = FabricaPessoa.criar_pessoa()
             pessoa.set_nome(nome)
             pessoa.set_idade(idade)
             pessoa.set_senha(senha)
 
             daojogador = DAOJogador.DAOJogador()
-            daojogador.inicia_conexao()
+            #daojogador.inicia_conexao()
             daojogador.insere_jogador(pessoa.toString())
-            daojogador.fecha_conexao()
+            #daojogador.fecha_conexao()
 
 
         except Error.Error as detalhe:
@@ -49,9 +49,9 @@ class AplGerenciarJogador():
                 raise Error.Error('Insira uma senha')
 
             daojogador = DAOJogador.DAOJogador()
-            daojogador.inicia_conexao()
+            #daojogador.inicia_conexao()
             dados = daojogador.logar_jogador(nome, senha)
-            daojogador.fecha_conexao()
+            #daojogador.fecha_conexao()
 
 
             pessoa = Pessoa.Pessoa()
@@ -78,9 +78,9 @@ class AplGerenciarJogador():
 
         try:
             daojogador = DAOJogador.DAOJogador()
-            daojogador.inicia_conexao()
+            #daojogador.inicia_conexao()
             daojogador.salvar_jogador(pessoa)
-            daojogador.fecha_conexao()
+            #daojogador.fecha_conexao()
         except Error.Error as detalhe:
             raise Error.Error(detalhe.msg)
 

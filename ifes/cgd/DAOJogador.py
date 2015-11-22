@@ -24,6 +24,7 @@ class DAOJogador(object):
 
     def insere_jogador(self, pessoa):
         try:
+            self.inicia_conexao()
             lista = []
             lista.append(pessoa)
             cur = self.con.cursor()
@@ -42,13 +43,15 @@ class DAOJogador(object):
                 self.con.rollback()
             error = Error.Error('Ocorreu um erro com o banco de dados')
             raise error
-
+        finally:
+            self.fecha_conexao()
 
         return
 
     def get_jogadores(self):
         jogadores = []
         try:
+            self.inicia_conexao()
             cur = self.con.cursor()
             cur.execute(""" SELECT Nome, Highscore FROM Pessoa ORDER BY Highscore DESC LIMIT 10""")
             for linha in cur.fetchall():
@@ -58,6 +61,8 @@ class DAOJogador(object):
 
         except Exception as e:
             print(e)
+        finally:
+            self.fecha_conexao()
 
 
         return jogadores
@@ -65,6 +70,7 @@ class DAOJogador(object):
     def logar_jogador(self, nome, senha):
         data = None
         try:
+            self.inicia_conexao()
             lst=[nome, senha]
             cur = self.con.cursor()
             cur.execute(""" SELECT * FROM Pessoa WHERE Nome = ? AND Senha = ? """, lst)
@@ -79,11 +85,13 @@ class DAOJogador(object):
             raise Error.Error(e.msg);
         except Exception:
             raise Error.Error('Error com o banco de dados');
-
+        finally:
+            self.fecha_conexao()
         return data
 
     def salvar_jogador(self, pessoa):
         try:
+            self.inicia_conexao()
             lst=[pessoa.get_highscore(), pessoa.get_tiros(), pessoa.get_percas(), pessoa.get_id()]
             cur = self.con.cursor()
             cur.execute(""" UPDATE Pessoa SET Highscore = ?, Tiros = ?, Percas = ? WHERE Id_Pessoa = ?""", lst)
@@ -93,7 +101,8 @@ class DAOJogador(object):
             raise Error.Error(e.msg);
         except Exception as e:
             raise Error.Error('Error com o banco de dados ' + e[0]);
-
+        finally:
+            self.fecha_conexao()
 
     def fecha_conexao(self):
         if self.con:

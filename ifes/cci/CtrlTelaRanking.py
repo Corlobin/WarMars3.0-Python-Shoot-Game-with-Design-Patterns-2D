@@ -13,7 +13,6 @@ class CtrlTelaRanking(Singleton.Singleton):
 
     def mostrar_ranking(self, game):
         opcao = self.tela.mostrar_ranking(game)
-        print(opcao)
         return opcao
 
 

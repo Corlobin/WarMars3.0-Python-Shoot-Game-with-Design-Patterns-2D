@@ -14,7 +14,7 @@ class Inimigo(Helicoptero.Helicoptero):
         self.shoot = 15
         self.descendo = 1
         self.subindo = 0
-
+        self.pontuacao = 1
 
     def update(self):
         self.atirar()
@@ -52,4 +52,7 @@ class Inimigo(Helicoptero.Helicoptero):
             self.municoes_list.add(municao)
             self.shoot = 15
         self.shoot -= 1
+
+    def set_pontuacao(self, pontos):
+        self.pontuacao = pontos
 

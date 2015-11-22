@@ -19,5 +19,4 @@ class CtrlTelaCenario(Singleton.Singleton):
             if (self.opcao == 0):
                 self.opcao = 1
                 return 0
-        #print(self.opcao)
         return 1

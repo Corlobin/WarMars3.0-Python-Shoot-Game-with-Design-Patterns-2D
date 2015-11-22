@@ -22,7 +22,7 @@ class TelaMenu(Singleton.Singleton):
         self.texto_sair = self.fonte.render("Sair", 1, (0, 0, 0))
 
     def mostrar_menu(self, game):
-
+        print(self.opcao)
         if game.botoes[0]: #cima
             if  self.opcao <= 5 and self.opcao > 1 :
                 self.opcao -= 1

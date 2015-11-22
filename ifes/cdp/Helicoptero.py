@@ -3,7 +3,9 @@ import pygame
 
 from ifes.cgd.Imagem import Imagem
 from ifes.cdp.Municao import Municao
+import random
 
+from ifes.util.FabricaMunicao import FabricaMunicao
 
 class Helicoptero(pygame.sprite.Sprite):
 
@@ -42,6 +44,8 @@ class Helicoptero(pygame.sprite.Sprite):
     def set_imagem(self, img):
         self.image = Imagem.load_image(img, 1)
         self.rect = self.image.get_rect()
+        self.rect.x = 500
+        self.rect.y = random.randint(25,450)
 
     def set_speed(self, speed):
         self.speed = speed
@@ -66,6 +70,7 @@ class Helicoptero(pygame.sprite.Sprite):
 
     def atualiza_pontos(self):
         self._pontos += 1
+
     def move_baixo(self):
         self.rect = self.rect.move(0, self.speed)
 
@@ -77,9 +82,7 @@ class Helicoptero(pygame.sprite.Sprite):
 
     def atirar(self):
         if(self._delay <= 0):
-            municao = Municao(1)
-            municao.rect.x = self.rect.x + 38 #Para deixar a municao saindo rente ao cano da arma
-            municao.rect.y = self.rect.y + 38 #Para deixar a municao saindo rente ao cano da arma
+            municao = FabricaMunicao.cria_municao(self.rect.x, self.rect.y)
             self.municoes_list.add(municao)
             self._delay = 15
             self._municao -= 1

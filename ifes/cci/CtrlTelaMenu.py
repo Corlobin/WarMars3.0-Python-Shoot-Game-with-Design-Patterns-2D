@@ -5,6 +5,7 @@ from ifes.cci import *
 
 from ifes.util import Singleton
 
+from ifes.util.EnumOpcoes import OpcoesMenu
 
 class CtrlTelaMenu(Singleton.Singleton):
 
@@ -14,29 +15,28 @@ class CtrlTelaMenu(Singleton.Singleton):
         self.ctrl_cadastro = CtrlTelaCadastro.CtrlTelaCadastro()
         self.ctrl_jogo = CtrlTelaCenario.CtrlTelaCenario()
         self.ctrl_login = CtrlTelaLogin.CtrlTelaLogin()
-        self.opcao = 0
+        self.opcao = OpcoesMenu.menu
         self.pessoa = None
 
     def imprime_menu(self, game):
-        if(self.opcao == 0):
+
+        if self.opcao == OpcoesMenu.menu:
             game.update_clock(10)
             self.opcao = self.tela_menu.mostrar_menu(game)
 
-        elif self.opcao == 1:
+        elif self.opcao == OpcoesMenu.login:
             self.opcao = self.ctrl_login.mostrar_login(game)
 
-        elif self.opcao == 2:
+        elif self.opcao == OpcoesMenu.cadastro:
             game.update_clock(10)
             self.opcao = self.ctrl_cadastro.mostrar_cadastro(game)
 
-        elif self.opcao == 3:
+        elif self.opcao == OpcoesMenu.ranking:
             game.update_clock(10)
-            print("Ranking")
             self.opcao = self.ctrl_ranking.mostrar_ranking(game)
 
-        elif self.opcao == 4:
+        elif self.opcao == OpcoesMenu.creditos:
             game.update_clock(10)
-            print("Creditos")
 
-        elif self.opcao == 5:
+        elif self.opcao == OpcoesMenu.sair:
             game.sair()

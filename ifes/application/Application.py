@@ -1,4 +1,3 @@
-import pygame
 
 from ifes.cci import CtrlTelaJogo
 telajogo = CtrlTelaJogo.CtrlTelaJogo()

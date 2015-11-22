@@ -15,9 +15,7 @@ class TelaCadastro(object):
         self.enviar = self.fonte.render("Enviar", 1, (0, 0, 0))
         self.voltar = self.fonte.render("Voltar", 1, (0, 0, 0))
 
-        self.texto_usuario=""
-        self.texto_senha=""
-        self.texto_idade=""
+        self.limpa_campos()
 
         self.fonte_error = pygame.font.SysFont("comicsansms", 16)
         self.texto_error = "Aperte TAB para mudar"
@@ -30,7 +28,11 @@ class TelaCadastro(object):
         self.usuario=self.fonte.render(self.texto_usuario, 1, (0, 0, 0))
         self.senha=self.fonte.render(self.texto_senha, 1, (0, 0, 0))
         self.idade=self.fonte.render(self.texto_idade, 1, (0, 0, 0))
-        print("called")
+
+    def limpa_campos(self):
+        self.texto_usuario=""
+        self.texto_senha=""
+        self.texto_idade=""
 
     def mostrar_cadastro(self, game):
         if game.botoes[0]: #cima
@@ -70,6 +72,16 @@ class TelaCadastro(object):
         game.screen.blit(self.background_menu, (0, 0))
 
         self.atualiza_dados(game)
+
+        self.desenha_tela(game)
+
+        self.error = self.fonte_error.render(self.texto_error, 1, (255, 0, 0))
+        game.screen.blit(self.error, (270, 320))
+
+        pygame.display.update()
+        return (None, 2)
+
+    def desenha_tela(self,game):
         game.screen.blit(self.usuario, (207, 212))
         game.screen.blit(self.senha, (203, 243))
         game.screen.blit(self.idade, (203, 270))
@@ -78,11 +90,6 @@ class TelaCadastro(object):
         game.screen.blit(self.voltar, (300, 400))
         game.screen.blit(self.seta, (275, 400+self.retorna_posicao()))
 
-        self.error = self.fonte_error.render(self.texto_error, 1, (255, 0, 0))
-        game.screen.blit(self.error, (270, 320))
-
-        pygame.display.update()
-        return (None, 2)
 
     def retorna_posicao(self):
         return ((self.opcao-1) * 30)+5
