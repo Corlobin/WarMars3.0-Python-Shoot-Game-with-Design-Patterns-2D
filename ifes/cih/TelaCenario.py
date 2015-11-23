@@ -74,7 +74,7 @@ class TelaCenario(object):
             self.time = self.tempo_respawn
         self.time -= 1
 
-        print(self.inimigos_list)
+        #print(self.inimigos_list)
 
         if self.checa_colisoes() == EnumCenario.colisao:
             return OpcoesMenu.cadastro
@@ -103,7 +103,7 @@ class TelaCenario(object):
             result3 = pygame.sprite.groupcollide(self.helicoptero_sprite, inimigo.municoes_list, False, True)
             if result3:
                 inimigo.kill()
-                print("OK")
+                #print("OK")
                 return EnumCenario.colisao
 
         return EnumCenario.sem_colisao
