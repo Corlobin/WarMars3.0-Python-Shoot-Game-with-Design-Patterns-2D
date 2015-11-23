@@ -8,6 +8,9 @@ from ifes.cgd import Imagem, Som
 
 from ifes.util.FabricaInimigo import FabricaInimigo
 class TelaCenario(object):
+    #Essa e uma das telas mais importantes
+    #Nela eu faço toda a logica do jogo.
+
     def __init__(self):
         self.tempo_respawn = 60
         self.tempo_respawn_limite = 0

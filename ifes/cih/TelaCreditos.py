@@ -5,6 +5,8 @@ import pygame
 from ifes.cgd import *
 
 class TelaCreditos(object):
+    #Tela responsavel por mostrar os creditos do jogo
+
     def __init__(self):
 
         self.bg_menu = Imagem.Imagem.load_image('creditos.png', 0)

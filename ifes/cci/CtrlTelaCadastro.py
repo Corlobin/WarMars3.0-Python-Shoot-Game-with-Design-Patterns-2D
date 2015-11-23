@@ -6,7 +6,7 @@ from ifes.util import Singleton
 from ifes.cgt import AplGerenciarJogador
 from ifes.cgd import Error
 class CtrlTelaCadastro(Singleton.Singleton):
-
+    #Faz o controle da tela do cadastro
     def __init__(self):
         self.tela = TelaCadastro.TelaCadastro()
 

@@ -3,6 +3,9 @@ __author__ = 'Ricardo'
 import pygame
 import sys
 class TelaJogo:
+    # Essa é a classe mais alta, é aqui que eu faço toda a captura das teclas e passo adiante
+    # Nela também eu instancio a janela, da qual, ela é criada uma unica vez e pintada pelas demais atarvés do looop dos controladores.
+    # Nela eu armazeno tambem o usuario logado atualmente
 
     def __init__(self):
         pygame.init()

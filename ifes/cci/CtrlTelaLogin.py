@@ -6,12 +6,14 @@ from ifes.cci import CtrlTelaCenario
 from ifes.util import Singleton
 from ifes.cgt import AplGerenciarJogador
 from ifes.cgd import Error
+from ifes.util.LoadProxy import LoadProxy
 class CtrlTelaLogin(Singleton.Singleton):
 
     def __init__(self):
         self.tela = TelaLogin.TelaLogin()
         self.telaJogando = TelaCenario.TelaCenario()
         self.ctrl_cenario = CtrlTelaCenario.CtrlTelaCenario()
+        self.load = LoadProxy()
         self.mostrandoCenario = False
         self.pessoa = None
         self.opcao = 0
@@ -40,12 +42,14 @@ class CtrlTelaLogin(Singleton.Singleton):
                         self.pessoa = AplGerenciarJogador.AplGerenciarJogador.logar_jogador(self.pessoa)
                         self.mostrandoCenario = True
                         self.opcao = 1
-                        waiting = 0
-                        while waiting <= 200:
-                            self.tela.update_error(game, waiting)
-                            waiting += 1
-                        game.usuario = self.pessoa
+                        #waiting = 0
+                        #while waiting <= 200:
+                        #    self.tela.update_error(game, waiting)
+                        #    waiting += 1
 
+                        self.load.start(game)
+
+                        game.usuario = self.pessoa
                         game.update_clock(30)
 
                     except Error.Error as arg:

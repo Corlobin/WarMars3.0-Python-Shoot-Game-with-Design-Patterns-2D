@@ -7,6 +7,8 @@ from ifes.util import Singleton
 
 
 class TelaMenu(Singleton.Singleton):
+    # Essa e a tela que mostra o menu do jogo
+
     def __init__(self):
 
         self.opcao = 1

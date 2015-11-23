@@ -7,6 +7,10 @@ from ifes.cgd import *
 from ifes.cgt import AplGerenciarJogador
 
 class TelaCadastro(object):
+    # Nessa é a tela responsavel por realizar o cadastramento dos usuarios
+    # Ela basicamente carrega todos os dados, como background etc e faz a logica das setas
+    # Assim, quando o usuario inserir os dados, estes sao processados pelos controladores que fazem as respectivas relações
+
     def __init__(self):
 
         self.background_menu = Imagem.Imagem.load_image('cadastro.png', 0)

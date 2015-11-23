@@ -7,6 +7,10 @@ from ifes.cgd import *
 from ifes.cgt import AplGerenciarJogador
 
 class TelaLogin(object):
+    # Essa e a tela responsavel por fazer o login do jogo
+    # Carrego todas as informações e armazeno nas variaveis
+    # Após isso passo para o controlador para resalizar as respectivas relaçoes
+    # De validação etc
     def __init__(self):
 
         self.background_menu = Imagem.Imagem.load_image('logar.png', 0)
