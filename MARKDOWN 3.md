@@ -21,11 +21,14 @@ Para o desenvolvimento desse software foi utilizado o modelo de desenvolvimento 
 3. Peso-Mosca
 4. Reflection
 5. Singleton
-6. Banco de dados
-7. Melhoria utilizando padrões
-8. Não uso de alguns padrões neste trabalho, explicação
-9. Correções do trabalho 2 comentadas
-
+6. Proxy
+7. Adapter
+8. Banco de dados
+9. Melhoria utilizando padrões
+10. Não uso de alguns padrões neste trabalho, explicação
+11. Correções do trabalho 2 comentadas
+12. Diagrama de classes
+13. Sonar
 
 ### 1. Padrões de projeto ###
 
@@ -38,7 +41,7 @@ O Método Fábrica foi utilizado pois ele oferece um meio de desligar a delegar 
 
 A imagem abaixo representa uma relação das classes do padrão Fabrica.
 
-#imagem
+![](https://github.com/Corlobin/WarMars3.0/blob/master/diagrama_fabrica.png?raw=true)
 
 O método FabricaInimigo.cria_inimigo() assim como, é um padrão **method fabrica e um fachada e um prototipo**, nele, delegamos a responsabilidade de criar um inimigo para o jogador dinamicamente. Esse inimigo é de responsabilidade de um metodo que aleatoriamente seleciona um inimigo para criar [prototipo]. Quando o inimigo é escolhido, por exemplo, avião, é utilizado de **Reflection** para dinamicamente carregar o **Builder** respectivo. Após o Builder respectivo ser selecionado ele é passado como parametro para o desenvolvedor, que cria o inimigo e define seus atributos passados na interface Fabrica, da qual, cada inimigo é herdada. 
 
@@ -80,7 +83,12 @@ O padrão singleton tem como objetivo fazer com que um objeto não seja instanci
 
 Para a implementação em python sem a utilização do instance = None é simples. Python oferece atribuição de "atributos" as classes. Desse modo, na classe Singleton, eu verifico se a classe que herdou tem o atributo 'instance'. Se a classe não tiver esse atributo, realizo o cls.instance, que basicamente é o instance = instanciação da classe e retorno a instancia dessa classe. Esse padrão foi utilizado através do livro de Design Patterns in Python. 
 
-##### 6. Padrão Adapter
+##### 6. Padrão Proxy
+
+O padrão proxy tem como objetivo prover um substituto ou um place-holder para um objeto, com o intuito de controlar esse ultimo. No trabalho, algumas vezes a parte de carregar o cenário era muito custoso e demorava alguns segundos, muitas vezes o usuario ficava sem saber o que fazer. Um problema também era nas teclas, ele não sabia quais teclas deveria apertar para jogar, para atirar. Desse modo, com a aplicação do padrão proxy na classe LoadProxy com o intuito de que quando o jogador for jogar, sera apresentada para ele uma tela de carregamento, quando os objetos estiverem carregados ele ira jogar o jogo.
+
+
+##### 7. Padrão Adapter
 Ele prove uma abordagem para resolver o problema criando uma classe que se adapta a nova classe aos moldes do programa. Foi criado uma pseudo-implementação deste padrão, da qual não está em utilização no trabalho.
 
 Por exemplo, caso seja necessario a utilização do banco de dados MYSQL e a inserção de determinado jogador seja necessaria uma mudança. 
@@ -88,11 +96,11 @@ Por exemplo, caso seja necessario a utilização do banco de dados MYSQL e a ins
 A classe MYSQLDaoJogador faz essa adaptação a inserção de determinada função para o DAOJogador, classe que representaria diversas entidades do banco de dados.
 
 
-##### 7. Banco de Dados
+##### 8. Banco de Dados
 
 Para este trabalho foi utilizado o padrão DAO com banco de dados SQlite3.
 
-##### 8. Melhoria utilizando padrões
+##### 9. Melhoria utilizando padrões
 
 Na primeira versão do trabalho, o trabalho 0, que se constituia em um pseudo-codigo funcional e estrutural, o codigo era imenso e a localização de determinados locais era dificutuoso. Como assim? se eu precisasse por exemplo, buscar aonde o inimigo estava sendo criado, verificar em qual lugar havia colisões eu demoraria anos, e nem mesmo comentarios poderiam ajudar.
 
@@ -104,15 +112,16 @@ Enfim, os padrões ajudaram em muito, até porque, esses mesmos padrões já est
 
 
 
-##### 9. Não uso de alguns padrões neste trabalho
+##### 10. Não uso de alguns padrões neste trabalho
 
 1. Decorador:
 	1. O decorador tem como objetivo basicamente adicionar responsabilidades a um objeto dinamicamente, neste trabalho ele não teve muita utilidade pois não houve essa necessidade, talvez em um trabalho futuro. PORQUE? Por que por enquanto eu não tenho a regra de que um inimigo pode ser melhorado (por exemplo: adicionar armas novas, adicionar armaduras, adicionar novos efeitos.....) se eu necessitasse dessas coisas eu **com certeza **utilizaria deste padrão.
 2. Composite
 	1. Tem como proposito realizar a composição de objetos em uma estrutura de arvore, formando uma entidade todo-parte. No trabalho não houve a necessidade de utilização. Todas as classes ja tem padrões implementados, não consegui visualizar utilidade.
 
+O restante é obvio; não houve utilidade para o jogo e para o trabalho. Não sei como eu poderia explicar melhor; uma vez que eles não foram implementados.
 
-##### 10. Correções
+##### 11. Correções
 DOCUMENTAÇÃO
 
 1. Apresentação
@@ -159,8 +168,11 @@ TESTES:
 	1.	Gostaria que olhasse com carinho em relação aos testes. No jogo, a maioria dos testes que são realizados são graficos, até mesmo no Fabrica eu deveria inicializar o pygame para verificar se o metodo esta criando normalmente um Fabrica. Para calcular por exemplo a imagem de um jogador eu deveria inicializar o pygame. Tudo bem que nos testes do banco de dados eu poderia ter usado assert como o senhor mesmo falou, mas de resto são tudo graficamente feitos, de modo que o assert não é util. Enfim, olhe com carinho em relação ao jogo, jogos em geral. Mas foi criado novos testes. 
 		
 
+##### 12. Diagrama de classes
+![](https://raw.githubusercontent.com/Corlobin/WarMars3.0/master/diasgrama.png?raw=true)
 
 
+##### 13. Sonar
 
 
 
