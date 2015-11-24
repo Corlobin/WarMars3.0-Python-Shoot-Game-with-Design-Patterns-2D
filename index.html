@@ -1,42 +1,45 @@
 <!doctype html>
-<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
-<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Warmars3.0 by Corlobin</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
-  <link rel="stylesheet" href="stylesheets/github-dark.css">
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/script.js"></script>
+  </head>
+  <body>
 
-  <title>Warmars3.0</title>
-  <meta name="description" content="Versão 3.0 do jogo!">
+      <header>
+        <h1>Warmars3.0</h1>
+        <p>Versão 3.0 do jogo!</p>
+      </header>
 
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+      <div id="banner">
+        <span id="logo"></span>
 
-</head>
-
-<body>
-
-  <div class="wrapper">
-    <header>
-      <h1 class="title">Warmars3.0</h1>
-    </header>
-    <div id="container">
-      <p class="tagline">Versão 3.0 do jogo!</p>
-      <div id="main" role="main">
-        <div class="download-bar">
-        <div class="inner">
-          <a href="https://github.com/Corlobin/WarMars3.0/tarball/master" class="download-button tar"><span>Download</span></a>
-          <a href="https://github.com/Corlobin/WarMars3.0/zipball/master" class="download-button zip"><span>Download</span></a>
-          <a href="https://github.com/Corlobin/WarMars3.0" class="code">View Warmars3.0 on GitHub</a>
+        <a href="https://github.com/Corlobin/WarMars3.0" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/Corlobin/WarMars3.0/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/Corlobin/WarMars3.0/tarball/master" class="button">TAR</a></li>
+          </ul>
         </div>
-        <span class="blc"></span><span class="trc"></span>
-        </div>
-        <article class="markdown-body">
-          <h2>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h2>
 <a id="war-mars" class="anchor" href="#war-mars" aria-hidden="true"><span class="octicon octicon-link"></span></a>War Mars</h2>
 
 <p><strong>War Mars</strong> é um jogo que está sendo desenvolvido para Windows/Linux/MacOS na linguagem Python.</p>
@@ -65,10 +68,14 @@
 <li>Peso-Mosca</li>
 <li>Reflection</li>
 <li>Singleton</li>
+<li>Proxy</li>
+<li>Adapter</li>
 <li>Banco de dados</li>
 <li>Melhoria utilizando padrões</li>
 <li>Não uso de alguns padrões neste trabalho, explicação</li>
 <li>Correções do trabalho 2 comentadas</li>
+<li>Diagrama de classes</li>
+<li>Sonar</li>
 </ol>
 
 <h3>
@@ -85,8 +92,7 @@
 
 <p>A imagem abaixo representa uma relação das classes do padrão Fabrica.</p>
 
-<h1>
-<a id="imagem" class="anchor" href="#imagem" aria-hidden="true"><span class="octicon octicon-link"></span></a>imagem</h1>
+<p><img src="https://github.com/Corlobin/WarMars3.0/blob/master/diagrama_fabrica.png?raw=true" alt=""></p>
 
 <p>O método FabricaInimigo.cria_inimigo() assim como, é um padrão <strong>method fabrica e um fachada e um prototipo</strong>, nele, delegamos a responsabilidade de criar um inimigo para o jogador dinamicamente. Esse inimigo é de responsabilidade de um metodo que aleatoriamente seleciona um inimigo para criar [prototipo]. Quando o inimigo é escolhido, por exemplo, avião, é utilizado de <strong>Reflection</strong> para dinamicamente carregar o <strong>Builder</strong> respectivo. Após o Builder respectivo ser selecionado ele é passado como parametro para o desenvolvedor, que cria o inimigo e define seus atributos passados na interface Fabrica, da qual, cada inimigo é herdada. </p>
 
@@ -128,7 +134,12 @@
 <p>Para a implementação em python sem a utilização do instance = None é simples. Python oferece atribuição de "atributos" as classes. Desse modo, na classe Singleton, eu verifico se a classe que herdou tem o atributo 'instance'. Se a classe não tiver esse atributo, realizo o cls.instance, que basicamente é o instance = instanciação da classe e retorno a instancia dessa classe. Esse padrão foi utilizado através do livro de Design Patterns in Python. </p>
 
 <h5>
-<a id="6-padrão-adapter" class="anchor" href="#6-padr%C3%A3o-adapter" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. Padrão Adapter</h5>
+<a id="6-padrão-proxy" class="anchor" href="#6-padr%C3%A3o-proxy" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. Padrão Proxy</h5>
+
+<p>O padrão proxy tem como objetivo prover um substituto ou um place-holder para um objeto, com o intuito de controlar esse ultimo. No trabalho, algumas vezes a parte de carregar o cenário era muito custoso e demorava alguns segundos, muitas vezes o usuario ficava sem saber o que fazer. Um problema também era nas teclas, ele não sabia quais teclas deveria apertar para jogar, para atirar. Desse modo, com a aplicação do padrão proxy na classe LoadProxy com o intuito de que quando o jogador for jogar, sera apresentada para ele uma tela de carregamento, quando os objetos estiverem carregados ele ira jogar o jogo.</p>
+
+<h5>
+<a id="7-padrão-adapter" class="anchor" href="#7-padr%C3%A3o-adapter" aria-hidden="true"><span class="octicon octicon-link"></span></a>7. Padrão Adapter</h5>
 
 <p>Ele prove uma abordagem para resolver o problema criando uma classe que se adapta a nova classe aos moldes do programa. Foi criado uma pseudo-implementação deste padrão, da qual não está em utilização no trabalho.</p>
 
@@ -137,12 +148,12 @@
 <p>A classe MYSQLDaoJogador faz essa adaptação a inserção de determinada função para o DAOJogador, classe que representaria diversas entidades do banco de dados.</p>
 
 <h5>
-<a id="7-banco-de-dados" class="anchor" href="#7-banco-de-dados" aria-hidden="true"><span class="octicon octicon-link"></span></a>7. Banco de Dados</h5>
+<a id="8-banco-de-dados" class="anchor" href="#8-banco-de-dados" aria-hidden="true"><span class="octicon octicon-link"></span></a>8. Banco de Dados</h5>
 
 <p>Para este trabalho foi utilizado o padrão DAO com banco de dados SQlite3.</p>
 
 <h5>
-<a id="8-melhoria-utilizando-padrões" class="anchor" href="#8-melhoria-utilizando-padr%C3%B5es" aria-hidden="true"><span class="octicon octicon-link"></span></a>8. Melhoria utilizando padrões</h5>
+<a id="9-melhoria-utilizando-padrões" class="anchor" href="#9-melhoria-utilizando-padr%C3%B5es" aria-hidden="true"><span class="octicon octicon-link"></span></a>9. Melhoria utilizando padrões</h5>
 
 <p>Na primeira versão do trabalho, o trabalho 0, que se constituia em um pseudo-codigo funcional e estrutural, o codigo era imenso e a localização de determinados locais era dificutuoso. Como assim? se eu precisasse por exemplo, buscar aonde o inimigo estava sendo criado, verificar em qual lugar havia colisões eu demoraria anos, e nem mesmo comentarios poderiam ajudar.</p>
 
@@ -153,7 +164,7 @@
 <p>Enfim, os padrões ajudaram em muito, até porque, esses mesmos padrões já estão comprovados que funcionam para diversos tipos de situaçoes.</p>
 
 <h5>
-<a id="9-não-uso-de-alguns-padrões-neste-trabalho" class="anchor" href="#9-n%C3%A3o-uso-de-alguns-padr%C3%B5es-neste-trabalho" aria-hidden="true"><span class="octicon octicon-link"></span></a>9. Não uso de alguns padrões neste trabalho</h5>
+<a id="10-não-uso-de-alguns-padrões-neste-trabalho" class="anchor" href="#10-n%C3%A3o-uso-de-alguns-padr%C3%B5es-neste-trabalho" aria-hidden="true"><span class="octicon octicon-link"></span></a>10. Não uso de alguns padrões neste trabalho</h5>
 
 <ol>
 <li>Decorador:
@@ -170,8 +181,10 @@
 </li>
 </ol>
 
+<p>O restante é obvio; não houve utilidade para o jogo e para o trabalho. Não sei como eu poderia explicar melhor; uma vez que eles não foram implementados.</p>
+
 <h5>
-<a id="10-correções" class="anchor" href="#10-corre%C3%A7%C3%B5es" aria-hidden="true"><span class="octicon octicon-link"></span></a>10. Correções</h5>
+<a id="11-correções" class="anchor" href="#11-corre%C3%A7%C3%B5es" aria-hidden="true"><span class="octicon octicon-link"></span></a>11. Correções</h5>
 
 <p>DOCUMENTAÇÃO</p>
 
@@ -302,26 +315,25 @@
 </ol>
 </li>
 </ol>
-        </article>
-      </div>
+
+<h5>
+<a id="12-diagrama-de-classes" class="anchor" href="#12-diagrama-de-classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>12. Diagrama de classes</h5>
+
+<p><img src="https://raw.githubusercontent.com/Corlobin/WarMars3.0/master/diasgrama.png?raw=true" alt=""></p>
+
+<h5>
+<a id="13-sonar" class="anchor" href="#13-sonar" aria-hidden="true"><span class="octicon octicon-link"></span></a>13. Sonar</h5>
+
+<p><img src="https://github.com/Corlobin/WarMars3.0/blob/master/sonar3.png?raw=true?raw=true" alt=""></p>
+
+<p>A complexidade com a utilização de diversos padrões decresceu de 3.0/function para 2.6/function. Desse modo tivemos um ganho de 0.4, ganho visivel. Os maiores problemas que o sonar apontou foi vicios linguisticos retirados da linguagem java (criaImagem, etc).</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/Corlobin">Corlobin</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
     </div>
-    <footer>
-      <div class="owner">
-      <p><a href="https://github.com/Corlobin" class="avatar"><img src="https://avatars0.githubusercontent.com/u/1748946?v=3&amp;s=60" width="48" height="48"></a> <a href="https://github.com/Corlobin">Corlobin</a> maintains <a href="https://github.com/Corlobin/WarMars3.0">Warmars3.0</a></p>
-
-
-      </div>
-      <div class="creds">
-        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
-      </div>
-    </footer>
-  </div>
-  <div class="current-section">
-    <a href="#top">Scroll to top</a>
-    <a href="https://github.com/Corlobin/WarMars3.0/tarball/master" class="tar">tar</a><a href="https://github.com/Corlobin/WarMars3.0/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
-    <p class="name"></p>
-  </div>
-
-  
-</body>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
 </html>
