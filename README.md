@@ -1,5 +1,8 @@
 ## War Mars ##
 
+
+**War Mars** is a python game for Windows/Linux/MacOS. Its a shoot Object-Oriented game.  
+
 **War Mars** é um jogo que está sendo desenvolvido para Windows/Linux/MacOS na linguagem Python.
 
 Autor(es): Antonio, Raone
