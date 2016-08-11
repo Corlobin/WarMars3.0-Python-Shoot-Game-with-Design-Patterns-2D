@@ -5,7 +5,7 @@
 
 **War Mars** é um jogo que está sendo desenvolvido para Windows/Linux/MacOS na linguagem Python.
 
-Autor(es): Antonio, Raone
+Autor(es): Antonio
 
 
 ### Etapas de desenvolvimento ###
