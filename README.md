@@ -12,7 +12,6 @@ Autor(es): Antonio
 
 Para o desenvolvimento desse software foi utilizado o modelo de desenvolvimento em cascata como o seu objetivo é que o desenvolvimento siga sempre para frente.
 
-- Requirimento
 - Projeto
 - Implementação
 - Codificação
